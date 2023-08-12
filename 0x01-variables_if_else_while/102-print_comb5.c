@@ -16,16 +16,16 @@ int main(void)
 		{
 			for (n3 = 48; n3 <= 57; n3++)
 			{
-				for (n4 = 48; n4 <= 57; n4++)
+				for (n4 = 49; n4 <= 57; n4++)
 				{
-					if (n1 != n2 && n1 != n3 && n1 != n4 && n2 != n3 && n2 != n4 && n3 != n4)
+					if (((n1 * 10 + n2) < (n3 * 10 + n4)))
 					{
 					putchar(n1);
 					putchar(n2);
 					putchar(' ');
 					putchar(n3);
 					putchar(n4);
-					if (!(n1 == 57 && n2 == 57 && n3 == 57 && n4 == 57))
+					if (!(n1 == 57 && n2 == 56 && n3 == 57 && n4 == 57))
 					{
 						putchar(',');
 						putchar(' ');
