@@ -18,7 +18,7 @@ int main(void)
 			{
 				for (n4 = 48; n4 <= 57; n4++)
 				{
-					if (((n1 + n2) <= (n3 + n4)) && ((n1 != n3) || (n2 != n4)))
+					if (n1 != n2 && n1 != n3 && n1 != n4 && n2 != n3 && n2 != n4 && n3 != n4)
 					{
 					putchar(n1);
 					putchar(n2);
