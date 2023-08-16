@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * jack_bauer - support function
+ * times_table - support function
  *
  * Descreption: a function that prints the 9 times table
  */
-void jack_bauer(void)
+void times_table(void)
 {
 	int i, j, k;
 
