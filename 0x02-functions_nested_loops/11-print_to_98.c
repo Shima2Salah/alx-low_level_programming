@@ -1,11 +1,10 @@
-#include"main.h"
+#include "main.h"
 
 /**
  * print_to_98 - funtion to print to 98 in ascending r desc order
  *
  * @n: integer 
  */
-
 void print_to_98(int n)
 {
 	int num;
