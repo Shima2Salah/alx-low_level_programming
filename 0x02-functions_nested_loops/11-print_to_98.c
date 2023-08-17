@@ -1,23 +1,37 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * print_to_98 - funtion to print to 98 in ascending r desc order
+ * print_to_98 - to print to 98
+ * @n: an integer
  *
- * @n: integer 
+ * Description: a program that prints
  */
 void print_to_98(int n)
 {
-	int num;
+	int i;
 
 	if (n <= 98)
 	{
-		for (num = n; num < 98; num++)
-			printf("%d, ", num);
+		for (i = n; i <= 98; i++)
+		{
+			printf("%d", i);
+			if (i != 98)
+			{
+				printf(", ");
+			}
+		}
 	}
 	else
 	{
-		for (num = n; num > 98; num--)
-			printf("%d, ", num);
+		for (i = n; i >= 98; i--)
+		{
+			printf("%d", i);
+			if (i != 98)
+			{
+				printf(", ");
+			}
+		}
 	}
-	printf("98\n");
+	printf("\n");
 }
+
