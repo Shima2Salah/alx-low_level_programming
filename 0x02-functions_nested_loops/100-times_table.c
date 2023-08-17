@@ -38,8 +38,10 @@ void print_times_table(int n)
 					_putchar((k % 10) + 48);
 				}
 				if (j != n)
+				{
 					_putchar(',');
-				_putchar(' ');
+					_putchar(' ');
+				}
 			}
 			_putchar('\n');
 		}
