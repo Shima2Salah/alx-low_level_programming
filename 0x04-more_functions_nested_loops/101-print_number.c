@@ -12,17 +12,30 @@ void print_number(int n)
 
 	if (n < 0)
 	{
-		_putchar('-');
-		n = n * (-1);
+		{
+			_putchar('-');
+		}
+		while (-1 * ((n / div)) >= 10)
+		{
+			div *= 10;
+		}
+		while (div > 0)
+		{
+			_putchar(-1 * ((n / div) % 10) + '0');
+			div /= 10;
+		}
 	}
-	while ((n / div) >= 10)
+	else
 	{
-		div *= 10;
-	}
-	while (div > 0)
-	{
-		_putchar((n / div) % 10 + '0');
-		div /= 10;
+		while ((n / div) >= 10)
+		{
+			div *= 10;
+		}
+		while (div > 0)
+		{
+			_putchar((n / div) % 10 + '0');
+			div /= 10;
+		}
 	}
 }
 
