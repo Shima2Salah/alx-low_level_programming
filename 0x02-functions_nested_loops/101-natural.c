@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: program print sum multiples of 3 and 5 
+ * Description: program print sum multiples of 3 and 5
  *
  * Return: 0
  */
