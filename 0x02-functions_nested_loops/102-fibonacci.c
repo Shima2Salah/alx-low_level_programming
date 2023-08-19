@@ -7,22 +7,19 @@
  *
  * Return: 0
  */
-
 int main(void)
 {
-	int c = 1;
-	unsigned long f = 1, s = 2, temp = 0;
+	long i, n;
+	long n1 = 1;
+	long n2 = 2;
 
-	printf("%lu, %lu", f, s);
-	do {
-		printf(", ");
-		temp = s;
-		s += f;
-		printf("%lu", s);
-		f = temp;
-		c++;
-	} while (c < 49);
-
-	printf("\n");
+	printf("%ld, %ld", n1, n2);
+	for (i = 1; i < 49; i++)
+	{
+		n = n1 + n2;
+		printf(", %ld", n);
+		n1 = n2;
+		n2 = n;
+	}
 	return (0);
 }
