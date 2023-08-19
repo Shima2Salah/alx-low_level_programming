@@ -7,23 +7,31 @@
  *
  * Return: 0
  */
-
 int main(void)
 {
-unsigned long f1 = 0, f2 = 1, sum;
-float total;
-while (1)
-{
-sum = f1 + f2;
-if (sum > 4000000)
-break;
+	long n, sum;
+	long n1 = 1;
+	long n2 = 2;
+	long x = 2;
 
-if ((sum % 2) == 0)
-total += sum;
+	for (n = 1; n < 4000000; n++)
+	{
+		if (n == (n1 + n2))
+		{
+			n = n1 + n2;
+			{
+				if (n % 2 == 0)
+				{
+					sum = x + n;
+					x = sum;
+				}
+			}
+			n1 = n2;
+			n2 = n;
+		}
+	}
+	printf("%ld", sum);
+	printf("\n");
+	return (0);
+}
 
-f1 = f2;
-f2 = sum;
-}
-printf("%.0f\n", total);
-return (0);
-}
