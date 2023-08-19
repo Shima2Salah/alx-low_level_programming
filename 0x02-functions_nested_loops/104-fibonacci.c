@@ -1,46 +1,27 @@
-#include <stdio.h>
-#include <stdint.h>
+#include<stdio.h>
+
 /**
-* main - Entry point.
-* Return: Always 0 (success).
-*/
+ * main - Entry point
+ *
+ * Description: program print first 50 fibonacci
+ *
+ * Return: 0
+ */
 int main(void)
 {
-	unsigned long int n1 = 1, n2 = 2, r = 0, n12, n22, r2;
-	int i;
+	long i, n;
+	long n1 = 1;
+	long n2 = 2;
 
-	printf("1, 2, ");
-	for (i = 0; i < 96; i++)
+	printf("%ld, %ld", n1, n2);
+	for (i = 1; i < 49; i++)
 	{
-		if (i < 90)
-		{
-			r = n1 + n2;
-			printf("%lu", r);
-			n1 = n2;
-			n2 = r;
-		}
-		else
-		{
-			if (i == 90)
-			{
-				n12 = n1 % 10000000000;
-				n1 /= 10000000000;
-				n22 = n2 % 10000000000;
-				n2 /= 10000000000;
-			}
-			r = n1 + n2 + (n12 + n22) / 10000000000;
-			r2 = (n12 + n22) % 10000000000;
-			printf("%lu%lu", r, r2);
-			n1 = n2;
-			n2 = r;
-			n12 = n22;
-			n22 = r2;
-		}
-		if (i != 95)
-		{
-			printf(", ");
-		}
+		n = n1 + n2;
+		printf(", %ld", n);
+		n1 = n2;
+		n2 = n;
 	}
-	putchar('\n');
+	printf("\n");
 	return (0);
 }
+
