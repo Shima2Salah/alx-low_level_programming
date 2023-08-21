@@ -1,6 +1,7 @@
 #include "main.h"
 /**
- * void reset_to_98 - functn reset pointer
+ * reset_to_98 - functn reset pointer
+ * @n: integer var
  *
  * Description: functn reset n to 98
  */
