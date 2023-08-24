@@ -5,22 +5,15 @@
  *
  * Return: pointer
  */
-char *rot13(char *a)
+char *rot13(char *s)
 {
-	char *b;
-	int i;
+	int a[] = {-1, 1};
+	char *t = s;
 
-	for (i = 0; a[i] != '\0'; i++)
-	{
-		if (((a[i] >= 'a') && (a[i] <= 'm')) || ((a[i] >= 'A') && (a[i] <= 'M')))
-		{
-			a[i] = (a[i] + 13);
-		}
-		else if (((a[i] > 'm') && (a[i] <= 'z')) || ((a[i] > 'M') && (a[i] <= 'Z')))
-		{
-			a[i] = (a[i] - 13);
-		}
-	}
-	b = a;
-	return (b);
+	while (*s++)
+		if ((*(s - 1) >= 97 && *(s - 1) <= 122) || (*(s - 1) >= 65 &&
+		*(s - 1) <= 90))
+			*(s - 1) = *(s - 1) + 13 * a[*(s - 1) <= 77 || (*(s - 1) >= 97 &&
+		*(s - 1) <= 109)];
+	return (t);
 }
