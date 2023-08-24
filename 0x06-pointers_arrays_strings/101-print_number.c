@@ -1,25 +1,29 @@
 #include"main.h"
 
 /**
- * print_number - function to print the exact number
- *
- * @n: n of type int
- */
-
+* print_number - Prints an integer.
+* @n: integer to be printed.
+*/
 void print_number(int n)
 {
-	unsigned int digit = n;
+	unsigned int d = 1, c, r;
 
-	/*first check if its negative*/
 	if (n < 0)
 	{
+		n *= -1;
 		_putchar('-');
-		digit = -digit;
 	}
-
-	/* recursively print the first few digits*/
-	if ((digit / 10) > 0)
-		print_number(digit / 10);
-
-	_putchar((digit % 10) + '0');
+	c = n;
+	while (c / 10)
+	{
+		d *= 10;
+		c /= 10;
+	}
+	_putchar(c + '0');
+	while (d >= 10)
+	{
+		r = n % d;
+		d /= 10;
+		_putchar(r / d + '0');
+	}
 }
