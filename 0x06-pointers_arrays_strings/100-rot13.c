@@ -8,6 +8,7 @@ char *rot13(char *s)
 {
 	int a[] = {-1, 1};
 	char *t = s;
+	int i;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
