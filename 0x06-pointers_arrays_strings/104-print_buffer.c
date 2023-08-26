@@ -7,7 +7,7 @@
 void print_buffer(char *b, int size)
 {
 	int addr = 0, i = 0;
-	char *c = b, e[1000], *d = e;
+	char *c = b, e[], *d = e;
 
 	while (i++ < size)
 	{
