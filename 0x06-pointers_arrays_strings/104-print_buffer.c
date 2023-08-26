@@ -37,7 +37,7 @@ void print_buffer(char *b, int size)
 			if (i % 2)
 				putchar(' ');
 		}
-		for (i = 0; i <= 10 - (size + 1) % 10; i++)
+		for (i = 0; i <= 10 - ((size + 1) % 10); i++)
 			printf("  ");
 		for (i = 0; i < 5 - ((size) % 10 / 2); i++)
 			putchar(' ');
