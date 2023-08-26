@@ -14,7 +14,7 @@ char *_strncat(char *dest, char *src, int n)
 	while (n > 0)
 	{
 		*incr++ = *incr2++;
-		if (*(incr2 - 1) == '\0')
+		if (*(incr2) == '\0')
 			break;
 		n--;
 	}
