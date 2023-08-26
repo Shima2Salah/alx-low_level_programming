@@ -9,8 +9,8 @@ char *_strncat(char *dest, char *src, int n)
 {
 	char *incr = dest, *incr2 = src;
 
-	while (*(incr++ + 1) != '\0')
-		;
+	while (*incr != '\0')
+		incr++;
 	while (n-- > 0)
 	{
 		*incr++ = *incr2++;
