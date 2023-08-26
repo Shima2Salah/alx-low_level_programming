@@ -11,9 +11,9 @@ void print_buffer(char *b, int size)
 
 	while (i < size)
 	{
-		d[i - 1] = c[i - 1];
-		if (c[i - 1] < 32 || c[i - 1] > 126)
-			c[i - 1] = '.';
+		d[i] = c[i];
+		if (c[i] < 32 || c[i] > 126)
+			c[i] = '.';
 		i++;
 	}
 	for (i = 0; i < size / 10; i++)
