@@ -11,11 +11,12 @@ char *_strncat(char *dest, char *src, int n)
 
 	while (*incr != '\0')
 		incr++;
-	while (n-- > 0)
+	while (n > 0)
 	{
 		*incr++ = *incr2++;
 		if (*(incr2 - 1) == '\0')
 			break;
+		n--;
 	}
 	return (dest);
 }
