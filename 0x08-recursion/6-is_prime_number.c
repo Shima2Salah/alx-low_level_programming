@@ -20,14 +20,13 @@ int is_prime_number(int n)
  */
 int div (int n , int y)
 {
-	int x;
 	if ((n % y) == 0)
 	{
 		return(0);
 	}
 	else if (((n % y) != 0) && (y > 2))
 	{
-		x = div(n, y - 1);
+		return(div(n, y - 1));
 	}
 	else
 	{
