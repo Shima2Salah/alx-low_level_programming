@@ -32,7 +32,7 @@ int sized(char *s)
 	}
 }
 /**
- * sized - functn returns size of string
+ * check - functn returns size of string
  * @s: input pointer
  * @i: size
  * @n: integer
