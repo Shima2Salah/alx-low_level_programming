@@ -18,15 +18,15 @@ int is_prime_number(int n)
  *
  * Return: integer
  */
-int div (int n , int y)
+int div(int n, int y)
 {
 	if ((n % y) == 0)
 	{
-		return(0);
+		return (0);
 	}
 	else if (((n % y) != 0) && (y > 2))
 	{
-		return(div(n, y - 1));
+		return (div(n, y - 1));
 	}
 	else
 	{
