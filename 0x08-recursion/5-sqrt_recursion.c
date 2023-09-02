@@ -6,6 +6,8 @@
 */
 int test(int n, int m)
 {
+	int r = 0;
+
 	if (n == 1)
 	{
 		return (1);
@@ -18,14 +20,16 @@ int test(int n, int m)
 		}
 		else
 		{
-			test(n, m + 1);
+			r = test(n, m + 1);
 		}
 	}
 	else
 	{
 		return (-1);
 	}
+	return (r);
 }
+
 /**
 * _sqrt_recursion - Returns the natural square root of a number.
 * @n: Number to obtain the square root.
