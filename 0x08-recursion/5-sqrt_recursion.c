@@ -6,15 +6,25 @@
 */
 int test(int n, int m)
 {
-	int r = 0;
-
-	if (n * n == m)
-		return (n);
-	else if (n * n < m)
-		r = test(n + 1, m);
+	if (n == 1)
+	{
+		return (1);
+	}
+	else if (n > m)
+	{
+		if ((n / m == m) && (n % m == 0))
+		{
+			return (m);
+		}
+		else
+		{
+			test(n, m + 1);
+		}
+	}
 	else
+	{
 		return (-1);
-	return (r);
+	}
 }
 /**
 * _sqrt_recursion - Returns the natural square root of a number.
@@ -23,5 +33,5 @@ int test(int n, int m)
 */
 int _sqrt_recursion(int n)
 {
-	return (test(1, n));
+	return (test(n, 1));
 }
