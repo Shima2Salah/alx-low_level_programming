@@ -1,54 +1,100 @@
-Write a function that splits a string into words.
-
-Prototype: char **strtow(char *str);
-The function returns a pointer to an array of strings (words)
-Each element of this array should contain a single word, null-terminated
-The last element of the returned array should be NULL
-Words are separated by spaces
-Returns NULL if str == NULL or str == ""
-If your function fails, it should return NULL
-julien@ubuntu:~/0x0a. malloc, free$ cat 101-main.c
-#include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * print_tab - Prints an array of string
- * @tab: The array to print
- *
- * Return: nothing
- */
-void print_tab(char **tab)
+* count_words - Count the number of words on a given string.
+* @str: string to count words.
+* Return: Amount of words.
+*/
+int count_words(char *str)
 {
-    int i;
+	int wc = 0, word = 0;
 
-    for (i = 0; tab[i] != NULL; ++i)
-    {
-        printf("%s\n", tab[i]);
-    }
+	for (; *str; str++)
+		if (*str != ' ' && !word)
+		{
+			wc++;
+			word = 1;
+		}
+		else if (*str == ' ')
+		{
+			word = 0;
+		}
+	return (wc);
 }
-
 /**
- * main - check the code for ALX School students.
- *
- * Return: 1 if an error occurred, 0 otherwise
- */
-int main(void)
+* alloc_array - Creates array with words size.
+* @tmp: String to evaluate.
+* @arr: Array defined to store the result.
+* Return: Array ready to be filled.
+*/
+char **alloc_array(char *tmp, char ***arr)
 {
-    char **tab;
+	int wc = 0, word = 0, i = 0;
 
-    tab = strtow("      ALX School         #cisfun      ");
-    if (tab == NULL)
-    {
-        printf("Failed\n");
-        return (1);
-    }
-    print_tab(tab);
-    return (0);
+	for (; *tmp; tmp++)
+	{
+		if (*tmp != ' ')
+		{
+			wc++;
+			word = 1;
+		}
+		if ((*tmp == ' ' || !*(tmp + 1)) && word)
+		{
+			word = 0;
+			*(*arr + i) = malloc(wc + 1);
+			wc = 0;
+			if (!*(*arr + i))
+			{
+				while (i)
+				{
+					free(*(*arr + i));
+					i--;
+				}
+				free(*arr);
+				free(arr);
+				return (0);
+			}
+			i++;
+		}
+	}
+	return (*arr);
 }
-julien@ubuntu:~/0x0a. malloc, free$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 101-main.c 101-strtow.c -o strtow
-julien@ubuntu:~/0x0a. malloc, free$ ./strtow | cat -e
-ALX$
-School$
-#cisfun$
-julien@ubuntu:~/0x0a. malloc, free$
+/**
+* strtow - Splits a string into words.
+* @str: String to split.
+* Return: Vector of words, or NULL if failed..
+*/
+char **strtow(char *str)
+{
+	int wc = 0, word = 0, i = 0, j = 0;
+	char **arr;
+
+	if (!str || *str == '\0')
+		return (0);
+	wc = count_words(str);
+	if (!wc)
+		return (0);
+	arr = malloc((wc + 1) * 8);
+	if (!arr)
+		return (0);
+	arr[wc] = NULL;
+
+	arr = alloc_array(str, &arr);
+	if (!arr)
+	{
+		free(arr);
+		return (0);
+	}
+	for (; *str; str++)
+		if (*str != ' ')
+		{
+			arr[i][j++] = *str;
+			word = 1;
+		}
+		else if (*str == ' ' && word)
+		{
+			word = 0;
+			arr[i++][j] = '\0';
+			j = 0;
+		}
+	return (arr);
+}
