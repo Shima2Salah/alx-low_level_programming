@@ -13,6 +13,10 @@ char *str_concat(char *s1, char *s2)
 	int k = 0;
 	char *ptr;
 
+	if ((ptr == NULL) || (s1 == NULL) || (s2 == NULL))
+	{
+		return (NULL);
+	}
 	for (i = 0; s1[i] != '\0'; i++)
 	{
 		;
@@ -35,9 +39,5 @@ char *str_concat(char *s1, char *s2)
 		k++;
 	}
 	return (ptr);
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
 }
 
