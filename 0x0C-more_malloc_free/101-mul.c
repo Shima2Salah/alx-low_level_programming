@@ -2,110 +2,85 @@
 #include <stdlib.h>
 
 /**
- * exit_code - exits the code
+ * print_error - prints error message and exits with status 98
  */
-
-void exit_code(void)
+void print_error(void)
 {
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
-	_putchar('\n');
+	char *error = "Error\n";
+	int i;
+
+	for (i = 0; error[i] != '\0'; i++)
+		_putchar(error[i]);
 	exit(98);
 }
 
 /**
- * is_valid - checks if the given @s is valid
- * @s: address of the string
+ * check_valid - checks if the given string is valid
+ * @s: string to check
  */
-
-void is_valid(char *s)
+void check_valid(char *s)
 {
-	int i = 0;
+	int i;
 
-	if (s[i] == '-')
-		i = 1;
-	for (; s[i] != '\0'; i++)
-		if (s[i] < 48 || s[i] > 57)
-			exit_code();
-}
-
-/**
- * _atol - converts string to long
- * @s: address of the string
- * Return: address of the string
- */
-
-long int _atol(char *s)
-{
-	long int sum = 0;
-	int i = 0, sign = 1;
-
-	if (s[i] == '-')
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		sign = -1;
-		i = 1;
+		if (s[i] < '0' || s[i] > '9')
+			print_error();
 	}
-
-	for (; s[i] != '\0'; i++)
-		sum = (sum * 10) + (s[i] % 48);
-
-	sum *= sign;
-	return (sum);
 }
 
 /**
- * print_num - outputs the large number
- * @n: large number
+ * convert_to_long - converts string to long integer
+ * @s: string to convert
+ * Return: long integer value of string
  */
-
-void print_num(long int n)
+long int convert_to_long(char *s)
 {
-	long int temp = n;
-	char *s;
-	int i = 0;
+	long int result = 0;
+	int i;
 
-	s = malloc(sizeof(char) * 100);
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		result = result * 10 + (s[i] - '0');
+	}
+	return (result);
+}
+
+/**
+ * print_result - prints the result
+ * @n: result to print
+ */
+void print_result(long int n)
+{
 	if (n < 0)
 	{
-		temp *= -1;
 		_putchar('-');
+		n = -n;
 	}
-	while (temp != 0)
-	{
-		s[i] = (temp % 10) + '0';
-		i++;
-		temp /= 10;
-	}
-
-	while (i >= 0)
-	{
-		_putchar(s[i]);
-		--i;
-	}
-
-	_putchar('\n');
+	if (n / 10)
+		print_result(n / 10);
+	_putchar((n % 10) + '0');
 }
 
 /**
- * main - Entry ponint
- * @argc: length of argument
+ * main - entry point
+ * @argc: number of arguments
  * @argv: array of arguments
- *
- * Return: Always 0;
+ * Return: 0 on success, 98 on failure
  */
-
 int main(int argc, char *argv[])
 {
+	long int num1, num2, result;
+
 	if (argc != 3)
-		exit_code();
-
-	is_valid(argv[1]);
-	is_valid(argv[2]);
-
-	print_num(_atol(argv[1]) * _atol(argv[2]));
-
+		print_error();
+	check_valid(argv[1]);
+	check_valid(argv[2]);
+	num1 = convert_to_long(argv[1]);
+	num2 = convert_to_long(argv[2]);
+	result = num1 * num2;
+	print_result(result);
+	_putchar('\n');
 	return (0);
 }
+
