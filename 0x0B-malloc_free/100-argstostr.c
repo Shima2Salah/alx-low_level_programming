@@ -1,19 +1,5 @@
 #include <stdlib.h>
 /**
-* len - Calculates length of string.
-* @str: String to evaluate.
-* Return: Length of string.
-*/
-int len(char *str)
-{
-	int siz = 0;
-
-	while (*str++)
-		siz++;
-
-	return (siz);
-}
-/**
 * argstostr - Concatenates all the arguments of your program.
 * @ac: Argument counter.
 * @av: Argument vector.
@@ -21,27 +7,38 @@ int len(char *str)
 */
 char *argstostr(int ac, char **av)
 {
-	int i = 0, siz = 1, j = 0;
-	char *res, *tmp;
+	int i, j, k = 0, len = 0;
+	char *ptr;
 
-	if (ac == 0 || !av)
-		return (0);
-
-	while (i < ac)
-		siz += len(av[i++]) + 1;
-
-	res = malloc(siz);
-	if (!res)
-		return (0);
-
-	tmp = res;
+	if ((ac == 0) || (av == NULL))
+	{
+		return (NULL);
+	}
 	for (i = 0; i < ac; i++)
 	{
-		while (av[i][j])
-			*tmp++ = av[i][j++];
-		*tmp++ = '\n';
-		j = 0;
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			len++;
+		}
+		len++;
 	}
-	res[siz - 1] = '\0';
-	return (res);
+	ptr = malloc(sizeof(ptr) * len + 1);
+
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			*(ptr + k) = av[i][j];
+			k++;
+		}
+		*(ptr + k) = '\n';
+		k++;
+	}
+	*(ptr + k) = '\0';
+	return (ptr);
 }
+
