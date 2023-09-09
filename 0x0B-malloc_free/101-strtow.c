@@ -29,7 +29,7 @@ char **alloc_array(char *str, int count)
 	char **ptr;
 	int j = 0, i, k = 0, m;
 
-	if (str == NULL || count == 0)
+	if (str == NULL || count == 1)
 		return (NULL);
 	ptr = malloc(sizeof(ptr) * count);
 	if (ptr == NULL)
