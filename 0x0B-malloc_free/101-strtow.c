@@ -6,57 +6,62 @@
 */
 int count_words(char *str)
 {
-	int wc = 0, word = 0;
+	int i, count = 0;
 
-	for (; *str; str++)
-		if (*str != ' ' && !word)
-		{
-			wc++;
-			word = 1;
-		}
-		else if (*str == ' ')
-		{
-			word = 0;
-		}
-	return (wc);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[0] != ' ')
+			count++;
+		if (str[i] == ' ' && (str[i + 1] != ' ' && str[i + 1] != '\0'))
+			count++;
+	}
+	count++;
+	return (count);
 }
 /**
 * alloc_array - Creates array with words size.
-* @tmp: String to evaluate.
-* @arr: Array defined to store the result.
-* Return: Array ready to be filled.
+* @str: String to evaluate.
+* @count: integer input.
+* Return: filled array.
 */
-char **alloc_array(char *tmp, char ***arr)
+char **alloc_array(char *str, int count)
 {
-	int wc = 0, word = 0, i = 0;
+	char **ptr;
+	int j = 0, i, k = 0, m;
 
-	for (; *tmp; tmp++)
+	ptr = malloc(sizeof(ptr) * count);
+	if (ptr == NULL)
+		return (NULL);
+	if (str[0] == ' ')
+		j++;
+	for (i = 0; i < count - 1; i++)
 	{
-		if (*tmp != ' ')
+		while (str[j] != '\0')
 		{
-			wc++;
-			word = 1;
-		}
-		if ((*tmp == ' ' || !*(tmp + 1)) && word)
-		{
-			word = 0;
-			*(*arr + i) = malloc(wc + 1);
-			wc = 0;
-			if (!*(*arr + i))
+			if (str[j] == ' ' && str[j - 1] != ' ')
+				break;
+			if (str[j] == ' ')
+				j++;
+			if (str[j] != ' ')
 			{
-				while (i)
-				{
-					free(*(*arr + i));
-					i--;
-				}
-				free(*arr);
-				free(arr);
-				return (0);
+				j++;
+				k++;
 			}
-			i++;
 		}
+		k++;
+		ptr[i] = malloc(sizeof(char) * k);
+		if (ptr[i] == NULL)
+		{
+			for (m = 0; m < k; m++)
+				free(ptr[m]);
+			free(ptr);
+			return (NULL);
+		}
+		k = 0;
+		j++;
 	}
-	return (*arr);
+	ptr[i] = NULL;
+	return (ptr);
 }
 /**
 * strtow - Splits a string into words.
@@ -65,36 +70,25 @@ char **alloc_array(char *tmp, char ***arr)
 */
 char **strtow(char *str)
 {
-	int wc = 0, word = 0, i = 0, j = 0;
-	char **arr;
+	int i, j = 0, count = 0, l = 0;
+	char **ptr;
 
-	if (!str || *str == '\0')
-		return (0);
-	wc = count_words(str);
-	if (!wc)
-		return (0);
-	arr = malloc((wc + 1) * 8);
-	if (!arr)
-		return (0);
-	arr[wc] = NULL;
-
-	arr = alloc_array(str, &arr);
-	if (!arr)
-	{
-		free(arr);
-		return (0);
-	}
-	for (; *str; str++)
-		if (*str != ' ')
+	if (str == NULL)
+		return (NULL);
+	count = count_words(str);
+	ptr = alloc_array(str, count);
+	i = 0;
+	j = 0;
+	if (str[0] == ' ')
+		l++;
+	for (; str[l] != '\0'; l++)
+		if (str[l] != ' ')
+			ptr[i][j++] = str[l];
+		else if (str[l] == ' ' && str[l - 1] != ' ')
 		{
-			arr[i][j++] = *str;
-			word = 1;
-		}
-		else if (*str == ' ' && word)
-		{
-			word = 0;
-			arr[i++][j] = '\0';
+			ptr[i++][j] = '\0';
 			j = 0;
 		}
-	return (arr);
+	return (ptr);
 }
+
