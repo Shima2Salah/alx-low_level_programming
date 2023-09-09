@@ -73,7 +73,7 @@ char **strtow(char *str)
 	int i, j = 0, count = 0, l = 0;
 	char **ptr;
 
-	if (str == NULL)
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	count = count_words(str);
 	ptr = alloc_array(str, count);
