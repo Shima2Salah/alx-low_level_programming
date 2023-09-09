@@ -86,7 +86,7 @@ char **strtow(char *str)
 	for (; str[l] != '\0'; l++)
 		if (str[l] != ' ')
 			ptr[i][j++] = str[l];
-		else if (str[l] == ' ' && str[l - 1] != ' ')
+		else if ((str[l] == ' ') && (str[l - 1] != ' ') && (l > 0))
 		{
 			ptr[i++][j] = '\0';
 			j = 0;
