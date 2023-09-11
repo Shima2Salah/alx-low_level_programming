@@ -1,18 +1,22 @@
-#ifndef MAIN_H
-#define MAIN_H
-/**
- * struct dog - define dogs
- * @name: character
- * @age: float
- * @owner: character
- */
+#ifndef DOG_H
+#define DOG_H
 
-struct dog
+int _putchar(char c);
+/**
+* struct dog - Defines a dog element.
+* @name: Name of the dog.
+* @age: Age of the dog.
+* @owner: Owner of the dog.
+*/
+typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-};
+} dog_t;
+void init_dog(struct dog *d, char *name, float age, char *owner);
+void print_dog(struct dog *d);
+dog_t *new_dog(char *name, float age, char *owner);
+void free_dog(dog_t *d);
 
-#endif
-
+#endif /* DOG_H */
