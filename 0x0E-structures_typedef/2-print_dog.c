@@ -26,9 +26,5 @@ void print_dog(struct dog *d)
 			printf("Name: (nil)\n");
 		}
 	}
-	else
-	{
-		printf(" ");
-	}
 }
 
