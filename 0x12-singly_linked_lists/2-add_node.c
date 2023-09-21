@@ -28,4 +28,5 @@ return (NULL);
 New_List->len = i;
 New_List->next = *head;
 *head = New_List;
+return (New_List);
 }
