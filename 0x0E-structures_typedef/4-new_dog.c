@@ -30,10 +30,8 @@ free(d);
 return (NULL);
 }
 for (i = 0; name[i] != '\0'; i++)
-{
 d->name[i] = name[i];
 d->name[i] = '\0';
-}
 d->age = age;
 d->owner = malloc(j + 1);
 if (d->owner == NULL)
@@ -43,9 +41,7 @@ free(d);
 return (NULL);
 }
 for (j = 0; owner[j] != '\0'; j++)
-{
 d->owner[j] = owner[j];
 d->owner[j] = '\0';
-}
 return (d);
 }
