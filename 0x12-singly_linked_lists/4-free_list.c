@@ -2,17 +2,15 @@
 #include <stdlib.h>
 /**
 * free_list - Frees a linked list.
-* @head: Pointer to the first element of the list to be free'd.
+* @head: Pointer to the first element of list.
 */
 void free_list(list_t *head)
 {
-	list_t *iterator;
-
-	while (head)
-	{
-		iterator = head->next;
-		free(head->str);
-		free(head);
-		head = iterator;
-	}
+struct list_s *p;
+while (head != NULL)
+{p = head;
+free(head->str);
+head = p->next;
+free(p);
+}
 }
