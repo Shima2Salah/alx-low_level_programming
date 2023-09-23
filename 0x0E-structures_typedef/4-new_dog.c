@@ -1,18 +1,6 @@
+#include <stddef.h>
 #include <stdlib.h>
 #include "dog.h"
-/**
-* size - Gives the size of a string.
-* @str: String to evaluate.
-* Return: Length of string.
-*/
-int size(char *str)
-{
-	int c = 0;
-
-	while (*str++)
-		c++;
-	return (c);
-}
 /**
 * new_dog - Creates a new dog.
 * @name: Name for the dog.
@@ -22,39 +10,39 @@ int size(char *str)
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *ret_dog;
-	char *cname, *cowner;
-	int i = 0;
-
-	if (!name)
-		name = "";
-	if (!owner)
-		owner = "";
-	ret_dog = malloc(sizeof(dog_t));
-	if (!ret_dog)
-		return (0);
-	cname = malloc(size(name) + 1);
-	if (!cname)
-	{
-		free(ret_dog);
-		return (0);
-	}
-	cowner = malloc(size(owner) + 1);
-	if (!cowner)
-	{
-		free(cname);
-		free(ret_dog);
-		return (0);
-	}
-
-	while ((cname[i++] = *name++))
-		;
-	i = 0;
-	while ((cowner[i++] = *owner++))
-		;
-
-	ret_dog->name = cname;
-	ret_dog->age = age;
-	ret_dog->owner = cowner;
-	return (ret_dog);
+int i, j;
+dog_t *d;
+for (i = 0; name[i] != '\0'; i++)
+;
+for (j = 0; owner[j] != '\0'; j++)
+;
+d = malloc(sizeof(dog_t));
+if (d == NULL)
+return (NULL);
+d->name = malloc(i + 1);
+if (d->name == NULL)
+{
+free(d->name);
+free(d);
+return (NULL);
+}
+for (i = 0; name[i] != '\0'; i++)
+{
+d->name[i] = name[i];
+d->name[i] = '\0';
+}
+d->age = age;
+d->owner = malloc(j + 1);
+if (d->owner == NULL)
+{
+free(d->owner);
+free(d);
+return (NULL);
+}
+for (j = 0; owner[j] != '\0'; j++)
+{
+d->owner[j] = owner[j];
+d->owner[j] = '\0';
+}
+return (d);
 }
