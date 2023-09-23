@@ -8,9 +8,10 @@ void free_list(list_t *head)
 {
 struct list_s *p;
 while (head != NULL)
-{p = head;
-free(head->str);
+{
+p = head;
 head = p->next;
+free(p->str);
 free(p);
 }
 }
