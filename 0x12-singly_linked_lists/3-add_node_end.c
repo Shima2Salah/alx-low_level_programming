@@ -1,48 +1,43 @@
 #include "lists.h"
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 /**
-* _strlen - Gives the length of a string.
-* @s: String to evaluate.
-* Return: The length of the given string.
-*/
-int _strlen(char *s)
-{
-	short n = 0;
-
-	if (s)
-		while (*s != '\0')
-		{
-			s++;
-			n++;
-		}
-	return (n);
-}
-/**
-* add_node_end - Adds a node at the end of a list.
-* @head: Pointer to the current first element of the list.
-* @str: String to initialize the new element.
-* Return: Pointer to the new element or 0 if it fails.
-*/
+ * add_node_end - functn print list
+ * @head: input derefrencing pointer
+ * @str: input pointer string
+ * Return: list_t linked list
+ */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new, *h = *head;
-
-	if (!head)
-		return (NULL);
-	new = malloc(sizeof(list_t));
-	if (!new)
-		return (0);
-	new->str = strdup(str);
-	new->len = _strlen(new->str);
-	new->next = 0;
-	if (!*head)
-	{
-		*head = new;
-		return (new);
-	}
-	while (h->next)
-		h = h->next;
-	h->next = new;
-	return (new);
+struct list_s *New_List;
+struct list_s *temp = *head;
+int i;
+for (i = 0; str[i] != '\0'; i++)
+;
+if (head == NULL)
+return (NULL);
+New_List = malloc(sizeof(list_t));
+if (New_List == NULL)
+return (NULL);
+New_List->str = strdup(str);
+if (New_List->str == NULL)
+{
+free(New_List);
+return (NULL);
+}
+if (*head == NULL)
+{
+New_List->len = i;
+New_List->next = *head;
+*head = New_List;
+}
+else
+{
+New_List->len = i;
+New_List->next = NULL;
+while (temp->next != NULL)
+temp = temp->next;
+temp->next = New_List;
+}
+return (New_List);
 }
