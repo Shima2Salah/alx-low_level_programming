@@ -10,7 +10,7 @@ void free_listint2(listint_t **head)
 
 	if (!head || !*head)
 		return;
-		while (*head != NULL)
+	while (*head != NULL)
 	{
 		p = *head;
 		*head = p->next;
