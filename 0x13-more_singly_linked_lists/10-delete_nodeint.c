@@ -24,10 +24,10 @@ return (1);
 while ((i < index - 1) && (p != NULL))
 {
 p = p->next;
-if (p == NULL)
-return (-1);
 i++;
 }
+if ((p == NULL) || (p->next == NULL))
+return (-1);
 temp = p->next;
 if (!temp)
 return (-1);
