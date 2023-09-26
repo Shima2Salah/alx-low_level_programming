@@ -23,11 +23,11 @@ return (1);
 }
 while ((i < index - 1) && (p != NULL))
 {
+if (p->next == NULL)
+return (-1);
 p = p->next;
 i++;
 }
-if ((p == NULL) || (p->next == NULL))
-return (-1);
 temp = p->next;
 if (!temp)
 return (-1);
