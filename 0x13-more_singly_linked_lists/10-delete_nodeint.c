@@ -15,7 +15,7 @@ unsigned int i = 0;
 if ((head == NULL) || (!*head && index))
 return (-1);
 p = *head;
-if (*head == NULL || index == 0)
+if (index == 0)
 {
 *head = p->next;
 free(p);
