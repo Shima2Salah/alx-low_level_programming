@@ -29,7 +29,9 @@ return (-1);
 i++;
 }
 temp = p->next;
-p->next = p->next->next;
+if (!temp)
+return (-1);
+p->next = temp->next;
 free(temp);
 return (1);
 }
