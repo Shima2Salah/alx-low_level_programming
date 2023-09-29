@@ -15,7 +15,7 @@ while (p != NULL)
 if (p->next >= p)
 {
 p = p->next;
-return (p);
+return (p->next);
 }
 p = p->next;
 }
