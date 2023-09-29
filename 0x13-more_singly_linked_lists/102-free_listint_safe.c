@@ -7,21 +7,19 @@
 */
 size_t free_listint_safe(listint_t **h)
 {
-	int counter = 0;
-	listint_t *check = *h;
-
-	if (!*h || !h)
-		return (0);
-	while (1)
-	{
-		check = (*h)->next;
-		free(*h);
-		counter++;
-		if (!check || *h <= check)
-		{
-			*h = 0;
-			return (counter);
-		}
-		*h = check;
-	}
+listint_t *p;
+size_t len = 0;
+if (!h || !*h)
+return (0);
+while (*h != NULL)
+{
+p = *h;
+if (p->next >= p)
+p->next = NULL;
+*h = p->next;
+free(p);
+len++;
+}
+*h = NULL;
+return (len);
 }
