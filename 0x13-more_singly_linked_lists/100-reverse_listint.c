@@ -8,7 +8,6 @@ listint_t *reverse_listint(listint_t **head)
 {
 listint_t *prev;
 listint_t *after;
-unsigned int i = 0;
 if ((head == NULL) || (*head == NULL))
 return (NULL);
 prev = *head;
