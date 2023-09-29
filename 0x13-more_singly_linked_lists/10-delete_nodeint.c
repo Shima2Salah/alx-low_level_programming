@@ -20,12 +20,12 @@ if (index == 0)
 free(p);
 return (1);
 }
-while ((i < index - 1) && (p != NULL))
+while (index > 1)
 {
-if (p->next == NULL)
-return (-1);
 p = p->next;
-i++;
+if (!p)
+return (-1);
+index--;
 }
 temp = p->next;
 if (!temp)
