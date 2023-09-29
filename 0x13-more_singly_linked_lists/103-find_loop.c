@@ -13,7 +13,10 @@ p = head;
 while (p != NULL)
 {
 if (p->next >= p)
-return (p->next);
+{
+p = p->next;
+return (p);
+}
 p = p->next;
 }
 return (NULL);
