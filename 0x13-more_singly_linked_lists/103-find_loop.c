@@ -14,8 +14,7 @@ while (p != NULL)
 {
 if (p->next >= p)
 {
-p = p->next;
-return (p->next);
+return (p);
 }
 p = p->next;
 }
