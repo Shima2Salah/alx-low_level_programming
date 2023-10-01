@@ -10,18 +10,23 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *ptr, *end;
-
-	if (head == NULL)
-		return (NULL);
-	for (end = head->next; end != NULL; end = end->next)
-	{
-		if (end == end->next)
-			return (end);
-		for (ptr = head; ptr != end; ptr = ptr->next)
-			if (ptr == end->next)
-				return (end->next);
-	}
-
-	return (NULL);
+listint_t *p;
+listint_t *support;
+if (head == NULL)
+return (NULL);
+support = head;
+p = head->next;
+while (p != NULL)
+{
+if (p == p->next)
+return (p->next);
+while (support != p)
+{
+if (support == p->next)
+return (p->next);
+support = support->next;
+}
+p = p->next;
+}
+return (NULL);
 }
