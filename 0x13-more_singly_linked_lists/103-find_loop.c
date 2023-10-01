@@ -14,12 +14,12 @@ listint_t *p;
 listint_t *support;
 if (head == NULL)
 return (NULL);
-support = head;
 p = head->next;
 while (p != NULL)
 {
 if (p == p->next)
 return (p->next);
+support = head;
 while (support != p)
 {
 if (support == p->next)
