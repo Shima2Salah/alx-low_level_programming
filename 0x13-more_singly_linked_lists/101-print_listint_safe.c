@@ -38,10 +38,6 @@ support = support->next;
 }
 p = p->next;
 }
-if (p == NULL)
-{
-exit(98);
-}
 return (i);
 }
 
