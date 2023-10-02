@@ -1,21 +1,24 @@
 #include "main.h"
-#include <stdio.h>
 /**
- *
- *
- *
+ * read_textfile - functn to read filename
+ * @filename: input character
+ * @letters: input integer
+ * Return: integer size
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 FILE *fptr;
-int i = 0;
-fptr = fopen (filename, "r");
+size_t i = 0;
+char ch;
+fptr = fopen(filename, "r");
 if ((fptr == NULL) || (filename == NULL))
 return (0);
-while (fptr != EOF)
+while (((ch = getc(fptr)) != EOF) && i < letters)
 {
-fgets (filename, letters, fptr);
+_putchar(ch);
+if (ch != '\n')
+i++;
 }
-fclose (fptr);
+fclose(fptr);
 return (i);
 }
