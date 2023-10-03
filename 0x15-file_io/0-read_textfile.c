@@ -1,41 +1,41 @@
-#include <sys/types.h>
-#include <sys/stat.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "main.h"
 /**
-* read_textfile - Reads a text file and prints it to the POSIX standard output.
-* @filename: Name of the file to be read.
-* @letters: Number of letters it should read and print.
-* Return: Number of letters it could read and print.
-*/
+ * read_textfile - functn to read filename
+ * @filename: input character
+ * @letters: input integer
+ * Return: integer size
+ */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file_descriptor, nchars, write_check;
-	char *buffer;
-
-	if (!filename || !letters)
-		return (0);
-	file_descriptor = open(filename, O_RDONLY);
-	if (file_descriptor < 0)
-		return (0);
-	buffer = malloc(letters + 1);
-	if (!buffer)
-	{
-		close(file_descriptor);
-		return (0);
-	}
-	nchars = read(file_descriptor, buffer, letters);
-	if (nchars <= 0)
-	{
-		free(buffer);
-		close(file_descriptor);
-		return (0);
-	}
-	write_check = write(STDOUT_FILENO, buffer, nchars);
-	if (write_check < nchars)
-		return (0);
-	free(buffer);
-	close(file_descriptor);
-	return (nchars);
+if (filename == NULL)
+return 0;
+FILE *file = fopen(filename, "r");
+if (file == NULL)
+return (0);
+char *buffer = malloc(letters + 1);
+if (buffer == NULL)
+{
+fclose(file);
+return (0);
+}
+ssize_t total_read = fread(buffer, sizeof(char), letters, file);
+if (total_read <= 0)
+{
+fclose(file);
+free(buffer);
+return (0);
+}
+buffer[total_read] = '\0';
+ssize_t total_written = fwrite(buffer, sizeof(char), total_read, stdout);
+if (total_written != total_read)
+{
+fclose(file);
+free(buffer);
+return (0);
+}
+fclose(file);
+free(buffer);
+return (total_read);
 }
