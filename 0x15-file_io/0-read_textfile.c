@@ -14,7 +14,7 @@ char *buffer;
 ssize_t total_read;
 ssize_t total_written;
 if (filename == NULL)
-return 0;
+return (0);
 file = fopen(filename, "r");
 if (file == NULL)
 return (0);
