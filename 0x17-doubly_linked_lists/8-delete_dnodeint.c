@@ -19,13 +19,13 @@ if (*head != NULL)
 free(current);
 return (1);
 }
-while (current != NULL && i < index)
+while (i < index)
 {
+if (current == NULL)
+return (-1);
 current = current->next;
 i++;
 }
-if (current == NULL)
-return (-1);
 if (current->next == NULL)
 {
 current->prev->next = NULL;
