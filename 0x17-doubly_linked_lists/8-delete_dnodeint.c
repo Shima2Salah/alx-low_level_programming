@@ -14,6 +14,7 @@ return (-1);
 if (index == 0)
 {
 *head = current->next;
+free(current);
 return (1);
 }
 while (i < index)
@@ -27,11 +28,13 @@ if (current->next == NULL)
 {
 current->prev->next = NULL;
 current->prev = NULL;
+free(current);
 return (1);
 }
 current->prev->next = current->next;
 current->next->prev = current->prev;
 current->prev = NULL;
 current->next = NULL;
+free(current);
 return (1);
 }
