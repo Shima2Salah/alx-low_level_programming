@@ -19,6 +19,8 @@ return (NULL);
 new->n = n;
 while (i < idx - 1)
 {
+if (current == NULL)
+return (NULL);
 current = current->next;
 i++;
 }
