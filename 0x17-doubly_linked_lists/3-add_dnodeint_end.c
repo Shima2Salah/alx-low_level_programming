@@ -15,23 +15,17 @@ return (NULL);
 new = malloc(sizeof(dlistint_t));
 if (new == NULL)
 return (NULL);
-while (current != NULL)
-{
-if (current->next == NULL)
-{
-tail = current;
-tail->next = new;
-break;
-}
-current = current->next;
-}
 new->n = n;
 new->next = NULL;
-new->prev = tail;
 if (*head == NULL)
 {
 new->prev = NULL;
 *head = new;
+return (new);
 }
+while (current->next != NULL)
+current = current->next;
+current->next = new;
+new->prev = current;
 return (new);
 }
