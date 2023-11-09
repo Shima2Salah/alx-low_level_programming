@@ -1,9 +1,8 @@
 #include "lists.h"
 /**
- * get_dnodeint_at_index - functn get nodes
+ * sum_dlistint - functn to sum numbers
  * @head:struct head pointer
- * @index:struct index
- * Return: struct node
+ * Return: sum integer
  */
 int sum_dlistint(dlistint_t *head)
 {
