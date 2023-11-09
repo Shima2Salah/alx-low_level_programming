@@ -13,10 +13,11 @@ dlistint_t *current = *h;
 unsigned int i = 0;
 if (h == NULL)
 return (NULL);
-new = malloc(sizeof(dlistint_t));
-if (new == NULL)
-return (NULL);
-new->n = n;
+if (idx == 0)
+{
+new = add_dnodeint(h, n);
+return (new);
+}
 while (i < idx - 1)
 {
 if (current == NULL)
@@ -24,6 +25,15 @@ return (NULL);
 current = current->next;
 i++;
 }
+if (current->next == NULL)
+{
+new = add_dnodeint_end(h, n);
+return (new);
+}
+new = malloc(sizeof(dlistint_t));
+if (new == NULL)
+return (NULL);
+new->n = n;
 current->next->prev = new;
 new->next = current->next;
 new->prev = current;
