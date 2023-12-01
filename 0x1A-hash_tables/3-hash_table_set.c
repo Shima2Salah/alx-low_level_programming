@@ -19,6 +19,7 @@ while (current)
 {
 if (strcmp(current->key, key) == 0)
 {
+free(current->value);
 current->value = strdup(value);
 if (current->value == NULL)
 return (0);
