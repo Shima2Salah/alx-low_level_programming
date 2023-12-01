@@ -19,7 +19,7 @@ helper = current->next;
 free(current->key);
 free(current->value);
 free(current);
-current = current->next;
+current = helper;
 }
 }
 free(ht->array);
