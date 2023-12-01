@@ -12,7 +12,7 @@ creted_tbl = malloc(sizeof(hash_table_t));
 if (creted_tbl == NULL)
 return (NULL);
 creted_tbl->size = size;
-creted_tbl->array = malloc(sizeof(hash_node_t *) * size);
+creted_tbl->array = calloc(size, sizeof(hash_node_t *));
 if (creted_tbl->array == NULL)
 {
 free(creted_tbl);
