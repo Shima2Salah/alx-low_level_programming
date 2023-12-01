@@ -1,11 +1,11 @@
 #include "hash_tables.h"
 /**
- * hash_table_print - func prints hash table
+ * hash_table_delete - func delete hash table
  * @ht: hash table
  */
 void hash_table_delete(hash_table_t *ht)
 {
-unsigned long int idx, i = 0, count = 0;
+unsigned long int idx;
 hash_node_t *current;
 hash_node_t *helper;
 if (!ht)
