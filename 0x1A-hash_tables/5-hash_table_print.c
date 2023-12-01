@@ -15,7 +15,7 @@ current = ht->array[idx];
 while (current)
 {
 if (current->key != NULL)
-count ++;
+count++;
 current = current->next;
 }
 }
@@ -26,7 +26,7 @@ current = ht->array[idx];
 while (current)
 {
 printf("'%s': '%s'", current->key, current->value);
-if (i < count -1)
+if (i < count - 1)
 {
 printf(", ");
 i++;
