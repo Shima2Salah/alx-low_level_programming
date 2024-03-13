@@ -26,7 +26,7 @@ for (j = i - m; j <= i; j++)
 {
 if (j >= size)
 return (-1);
-printf("Value checked array[%d] = [%d]\n", j, array[j]);
+printf("Value checked array[%ld] = [%d]\n", j, array[j]);
 if (array[j] == value)
 return (j);
 }
