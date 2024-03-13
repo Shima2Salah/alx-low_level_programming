@@ -10,19 +10,19 @@
 */
 int jump_search(int *array, size_t size, int value)
 {
-	unsigned int sqroot, i, j;
-
-	if (!array || !size || array[0] > value)
-		return (-1);
-	sqroot = sqrt(size);
-	for (i = 0; i < size; i += sqroot)
-	{
-		if (array[i] >= value)
-			break;
-		printf("Value checked array[%d] = [%d]\n", i, array[i]);
-	}
-	printf("Value found between indexes [%d] and [%d]\n", i - sqroot, i);
-	for (j = i - sqroot; j <= i; j++)
+size_t m, i = 0, j;
+m = sqrt(size);
+if (array == NULL)
+return (-1);
+while (i < size)
+{
+printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+i = i + m;
+if (array[i] >= value)
+break;
+}
+printf("Value found between indexes [%ld] and [%ld]\n", i - m, i);
+	for (j = i - m; j <= i; j++)
 	{
 		if (j >= size)
 			return (-1);
