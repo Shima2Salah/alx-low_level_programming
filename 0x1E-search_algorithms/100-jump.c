@@ -16,11 +16,12 @@ size_t m, i = 0, j;
 m = sqrt(size);
 if (array == NULL)
 return (-1);
-for (i = 0; i < size; i += m)
+while (i < size)
 {
 if (array[i] >= value)
 break;
 printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+i = i + m;
 }
 printf("Value found between indexes [%ld] and [%ld]\n", i - m, i);
 for (j = i - m; j <= i && j < size; j++)
