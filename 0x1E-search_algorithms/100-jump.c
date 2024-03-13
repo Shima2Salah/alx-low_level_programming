@@ -24,8 +24,10 @@ if (array[i] >= value)
 break;
 }
 printf("Value found between indexes [%ld] and [%ld]\n", i - m, i);
-for (j = i - m; j <= i && j < size; j++)
+for (j = i - m; j <= i; j++)
 {
+if (j >= size)
+return (-1);
 printf("Value checked array[%ld] = [%d]\n", j, array[j]);
 if (array[j] == value)
 return (j);
